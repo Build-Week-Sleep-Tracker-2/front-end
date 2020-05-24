@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
+import ProtectedRoute from "./components/PrivateRoute";
+import Login from "./components/Login";
+import Logoff from "./components/Logoff";
+import Homepage from "./components/HomePage";
+import Registration from "./components/Registration";
 
-function App() {
+import './App.scss';
+
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav>
+        <Link to="/"><button>Login</button></Link>
+        <Link to="/"><button>Logoff</button></Link>
+        <Link to="/"><button>Home</button></Link>
+        <Link to="/"><button>Register</button></Link>
+      </nav>
+      <div className="App">
+        <h1>SleepTracker</h1>
+        <Route exact path="/" component={Login} />
+        <PrivateRoute path="/protected" component={Homepage} />
+        <PrivateRoute path="/protected" component={Registration} />
+        <ProtectedRoute path="/" component={Logoff} />
+      </div>
+    </Router>
   );
 }
 

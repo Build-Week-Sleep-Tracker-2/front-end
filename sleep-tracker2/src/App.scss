@@ -1,0 +1,20 @@
+nav{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+    button {
+      margin: 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      background-color: dodgerblue;
+      font-size: large;
+    }
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
